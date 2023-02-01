@@ -1,13 +1,11 @@
 package com.example.SpringBootCrud.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+
 
 @Entity
 public class Students {
-    // Testtt
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
@@ -16,6 +14,17 @@ public class Students {
     private int fee;
 
     public Students() {
+        // pour pouvoir créer un student sans avoir encore choisi ses paramètres
+    }
+
+    @Override
+    public String toString() {
+        return "Students{" +
+                "id=" + id +
+                ", studentName='" + studentName + '\'' +
+                ", course='" + course + '\'' +
+                ", fee=" + fee +
+                '}';
     }
 
     public Students(Long id, String studentName, String course, int fee) {
