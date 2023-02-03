@@ -1,0 +1,61 @@
+<script>
+    function researchStudent() {
+        var xhr = new XMLHttpRequest();
+        var val = document.getElementById('fieldForm').value;
+        xhr.open("GET", "http://localhost:8080/student/"+val, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+              var data = JSON.parse(xhr.responseText);
+              document.getElementById('studentName_').value= data["studentName"];
+              document.getElementById('course_').value= data["course"];
+              document.getElementById('fee_').value= data["fee"];
+            };
+        }
+        xhr.send();
+    }
+
+    function updateStudent() {
+        var xhr = new XMLHttpRequest();
+        var val = document.getElementById('fieldForm').value;
+        xhr.open("PUT", "http://localhost:8080/updateStudent/"+val, true); // GET, DELETE, PUT, POST
+        xhr.setRequestHeader("Content-Type", "application/json");
+        let textAreas = [document.getElementById('fieldForm'),
+                        document.getElementById('studentName_'),
+                        document.getElementById('course_'),
+                        document.getElementById('fee_')];
+        let data = {};
+        textAreas.forEach(function(textArea) {
+          data[textArea.id] = textArea.value;
+        });
+        xhr.send(JSON.stringify(data));
+        xhr.send();
+    }
+</script>
+
+<!DOCTYPE>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>update</title>
+    </head>
+
+    <body>
+        <h1 align="center">UPDATE</h1>
+
+        <Center>
+            <h2 align="center">ID : <input id="fieldForm" type="text" name="fieldForm"> <button onclick="researchStudent()">Research</button></h2>
+    
+
+            <h2 align="center">Student Name : <input id="studentName_" type="text" name="fieldForm"></h2>
+
+            <h2 align="center">Course : <input id="course_" type="text" name="fieldForm"> </h2>
+
+            <h2 align="center">Fee : <input id="fee_" type="text" name="fieldForm"> </h2>
+
+            <button onclick="updateStudent()">Update</button>
+        </Center>
+
+    </body>
+</html>
+

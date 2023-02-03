@@ -1,8 +1,9 @@
-package com.example.SpringBootCrud.domain;
+package com.example.SpringBootCrud.Domain;
 
-import jakarta.persistence.*;
-
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Students {
@@ -14,7 +15,6 @@ public class Students {
     private int fee;
 
     public Students() {
-        // pour pouvoir créer un student sans avoir encore choisi ses paramètres
     }
 
     @Override

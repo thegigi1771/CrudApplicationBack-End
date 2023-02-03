@@ -1,7 +1,7 @@
 package com.example.SpringBootCrud;
 
 import com.example.SpringBootCrud.Service.StudentService;
-import com.example.SpringBootCrud.domain.Students;
+import com.example.SpringBootCrud.Domain.Students;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -53,8 +53,8 @@ public class SpringBootCrudApplication {
 		Scanner scanner1 = new Scanner(System.in);
 		System.out.print("Enter the id you want to update: ");
 		Long input = scanner1.nextLong();
-		Optional<Students> optional = studentService.findById(input);
-		System.out.print(optional.get()); // get pour retourner la valeur contenu à l'adresse
+		Students student = studentService.findById(input);
+		System.out.print(student);
 		create();
 	}
 
